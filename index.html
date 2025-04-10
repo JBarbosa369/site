@@ -1,17 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1 id="Meutitulo">para todos os garotos que ja amei</h1>
-    <p id="Meuparagrafo">“Acho que nós dois fizemos promessas que não cumpriríamos.” </p>
-    <button onclick="Alterartitulo()">click</button>
-    <button onclick="Alterarparagrafo()">click</button>
-    <button onclick="desfazerAlteracao()">voltar</button>
+    <header>
+        <h1>Bem-vindo à minha página</h1>
+        <ul>
+            <li><a href="#">INÍCIO</a></li>
+            <li><a href="#">SOBRE</a></li>
+            <li><a href="#">CONTATO</a></li>
+        </ul>
+    </header>
 
-    <script src="script.js"></script>
+    <form id="Login">
+        <label for="username">NOME</label>
+        <input type="text" id="username" />
+
+        <label for="password">SENHA</label>
+        <input type="password" id="password" />
+
+        <button type="submit">Login</button>
+        <p id="Loginvalido"></p>
+    </form>
+
+    <main>
+        <h1>Olá</h1>
+        <p>Bem-vindos à minha página principal.</p>
+    </main>
+
+    <footer>
+        &copy; 2025 - Todos os direitos reservados | <a href="#" style="color: #ccc;">Contato</a>
+    </footer>
 </body>
 </html>
