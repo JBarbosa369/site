@@ -1,37 +1,55 @@
-// Preços dos produtos
-let precos = {
-  martelo: 49.00,
-  pregos: 8.00,
-  parafusos: 6.00
-};
-
 function mostrarPreco() {
-  const produto = document.getElementById('produto').value;
-  const precoDiv = document.getElementById('precoProduto');
-  
-  // Verificar se um produto foi selecionado
-  if (produto) {
-      precoDiv.innerHTML = `Preço: R$${precos[produto].toFixed(2)}`;
-  } else {
-      precoDiv.innerHTML = '';
+  const produto = document.getElementById("produto").value;
+  const precoDiv = document.getElementById("precoProduto");
+
+let preco = 0;
+
+switch (produto) {
+  case "martelo":
+  preco = 49.00;
+  break;
+  case "pregos":
+  preco = 8.00;
+  break;
+  case "parafusos":
+  preco = 6.00;
+  break;
+  default:
+  precoDiv.innerHTML = "";
+  return;
   }
+
+  precoDiv.innerHTML = `Preço unitário: R$ ${preco.toFixed(2)}`;
 }
 
 function calcular() {
-  const produto = document.getElementById('produto').value;
-  const quantidade = document.getElementById('quantidade').value;
-  
-  // Verificar se o produto e a quantidade estão selecionados
-  if (!produto || quantidade <= 0) {
-      alert("Por favor, selecione um produto e uma quantidade válida.");
+  const produto = document.getElementById("produto").value;
+  const quantidade = parseInt(document.getElementById("quantidade").value);
+  const resultado = document.getElementById("resultado");
+
+  resultado.classList.remove("error"); // Remove erro anterior, se houver
+
+  if (!produto || isNaN(quantidade) || quantidade <= 0) {
+      resultado.classList.add("error"); // Adiciona destaque de erro
+      resultado.innerHTML = "Por favor, selecione um produto e insira uma quantidade válida.";
       return;
   }
 
-  // Calcular o preço total
-  const precoTotal = precos[produto] * quantidade;
+  let precoUnitario = 0;
 
-  // Exibir o resultado
-  document.getElementById('resultado').innerHTML = `
-      <p>Total: R$${precoTotal.toFixed(2)}</p>
-  `;
+  switch (produto) {
+      case "martelo":
+          precoUnitario = 49.00;
+          break;
+      case "pregos":
+          precoUnitario = 8.00;
+          break;
+      case "parafusos":
+          precoUnitario = 6.00;
+          break;
+  }
+
+  const total = precoUnitario * quantidade;
+  resultado.classList.remove("error"); // Garante que a classe error não fique ativa
+  resultado.innerHTML = `Total: R$ ${total.toFixed(2)}`;
 }
